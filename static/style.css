@@ -1,0 +1,42 @@
+/* RESET + BACKGROUND */
+html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background-color: #0d1117; }
+spline-viewer { width: 100% !important; height: 100% !important; }
+.spline-background { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 1; }
+
+/* GLASS OVERLAY */
+.glass-effect { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 10; overflow: hidden; pointer-events: none !important; background: rgba(255,255,255,0.05); transition: backdrop-filter 0.9s ease, -webkit-backdrop-filter 0.9s ease; }
+.glass-effect .div { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+
+/* COMPONENTS */
+.master-branding-logo { position: fixed; top: 30px; left: 70px; width: 80px; height: auto; z-index: 999 !important; pointer-events: none !important; }
+.glass-effect .title { position: absolute; bottom: 60px; left: 70px; mix-blend-mode: hard-light; font-family: "Playfair Display", serif; font-weight: 100 !important; font-style: italic !important; color: #ded6cf; font-size: 200px; letter-spacing: -2px; line-height: 145px; text-transform: lowercase; }
+.glass-effect .title-and-button-row { position: absolute; bottom: 60px; left: 70px; display: flex; align-items: flex-end; gap: 20px; }
+
+/* CTA BUTTON */
+.glass-effect .cta-button-radar { border: none; outline: none; cursor: pointer; pointer-events: auto !important; font-family: -apple-system, BlinkMacSystemFont, "Playfair Display", Roboto, sans-serif; background: rgba(80, 109, 181, 0.25); border: 1px solid rgba(255,255,255,0.1); padding: 16px 36px; font-size: 1rem; font-weight: 600; color: #fff; border-radius: 30px; margin-bottom: 20px; transition: transform 0.4s ease, background 0.4s ease; }
+.glass-effect .cta-button-radar:hover { transform: scale(1.1); background: rgba(103, 45, 45, 0.35); }
+
+/* GLASS RIBBONS (shared styles) */
+.glass-effect .glass-ribbon {
+    position: absolute; top: 0; width: 6vw; height: 100vh;
+    background: linear-gradient(315deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.15) 50%, rgba(30,30,31,0) 100%);
+    background-size: 200% 200%; background-position: 0 0;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.4), inset -1px 0 4px rgba(0,0,0,0.16);
+    transition: background-position 0.6s ease, backdrop-filter 0.4s ease;
+}
+.glass-effect .glass-ribbon.shimmer { background-position: 100% 0; }
+
+/* Individual ribbon positions + blur */
+.glass-effect .div-2 { left: 64vw; backdrop-filter: blur(1.5px); }
+.glass-effect .div-3 { left: 70vw; backdrop-filter: blur(3px); }
+.glass-effect .div-4 { left: 76vw; backdrop-filter: blur(5px); }
+.glass-effect .div-5 { left: 82vw; backdrop-filter: blur(8px); }
+.glass-effect .div-6 { left: 88vw; backdrop-filter: blur(12px); }
+.glass-effect .div-7 { left: 94vw; backdrop-filter: blur(18px); }
+
+/* TEXTURE GRAIN */
+.glass-effect .texture-grain { position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: -1; mix-blend-mode: soft-light; opacity: 0.15; background: rgba(255,255,255,0.02); transition: backdrop-filter 0.9s ease, -webkit-backdrop-filter 0.9s ease; }
+
+/* HOVER BLUR EFFECTS */
+.glass-effect:has(.cta-button-radar:hover),
+.glass-effect .cta-button-radar:hover ~ .texture-grain { backdrop-filter: blur(25px) !important; -webkit-backdrop-filter: blur(25px) !important; }

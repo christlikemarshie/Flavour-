@@ -1,8 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() { 
     const locateBtn = document.getElementById("locate-btn"); 
 
-
-    // 🔄 THE POSITION RESET SAFETY VALVE (THE EDGE CASE FIX)
+    // THE POSITION RESET SAFETY VALVE (THE EDGE CASE FIX)
 
     // Target your navigation back button precisely using its text link attributes
     const scanAgainBtn = document.querySelector(".cta-button-radar[href='/']");
@@ -19,7 +18,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
     if (locateBtn) { 
         locateBtn.addEventListener("click", function() { 
-            // 🧠 CHECKS THE STORAGE VAULT FIRST
+            //  CHECKS THE STORAGE VAULT FIRST
             const savedLat = localStorage.getItem("tastequest_lat"); 
             const savedLon = localStorage.getItem("tastequest_lon"); 
 

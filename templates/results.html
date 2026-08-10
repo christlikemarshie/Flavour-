@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Nearby Restaurants</title>
+</head>
+<body>
+
+    <h1>Restaurants near you</h1>
+
+    {% if restaurants %}
+        <ul>
+
+            {% for r in restaurants %}
+                <li>
+
+                    <strong>{{ r.name }}</strong><br>
+                    Cuisine:
+                    {{ r.cuisine }}<br>
+
+                    Address:
+                    {{ r.address }}<br>
+
+                    Location:
+                    {{ r.lat }}, {{ r.lon }}
+
+                </li>
+
+            {% endfor %}
+        </ul>
+
+    {% else %}
+        <p>No restaurants were found nearby.</p>
+    {% endif %}
+
+</body>
+</html>

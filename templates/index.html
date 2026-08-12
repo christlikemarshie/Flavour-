@@ -1,47 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Taste Quest | Local Restaurant Locator</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-</head>
-<body>
-    <!-- ELEMENT 1: THE BACK 3D LAYER -->
-    <div class="spline-background">
-        <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.98/build/spline-viewer.js"></script>
-        <spline-viewer url="https://prod.spline.design/FST76E63lpJEZS9n/scene.splinecode"></spline-viewer>
-    </div>
+{% extends "base.html" %}
 
-    <!-- ELEMENT 2: THE FOREGROUND INTERFACE OVERLAY -->
-    <div class="glass-effect">
-        <div class="div">
-            <!-- 📷 BRANDING -->
-            <img class="master-branding-logo" src="{{ url_for('static', filename='images/logo.png') }}" alt="Taste Quest Logo" />
+{% block title %}
+Taste Quest | Local Restaurant Locator
+{% endblock %}
 
-            <!-- TITLE + BUTTON -->
-            <div class="title-and-button-row">
-                <div class="title">
-                    find <br/>
-                    food<br/>
-                    anywhere
-                </div>
-                <button id="locate-btn" class="cta-button-radar">
-                    Find Food Near Me 🍽️
-                </button>
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+{% endblock %}
+
+{% block content %}
+<!-- ELEMENT 1: THE BACK 3D LAYER -->
+<div class="spline-background">
+    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.98/build/spline-viewer.js"></script>
+    <spline-viewer url="https://prod.spline.design/FST76E63lpJEZS9n/scene.splinecode"></spline-viewer>
+</div>
+
+<!-- ELEMENT 2: THE FOREGROUND INTERFACE OVERLAY -->
+<div class="glass-effect">
+    <div class="div">
+        <!-- BRANDING -->
+        <img class="master-branding-logo" src="{{ url_for('static', filename='images/logo.png') }}" alt="TasteQuest logo">
+
+        <!-- TITLE + BUTTON -->
+        <div class="title-and-button-row">
+            <div class="title">
+                find <br>
+                food<br>
+                anywhere
             </div>
-
-            <!-- GLASS RIBBONS -->
-            <div class="div-2 glass-ribbon"></div>
-            <div class="div-3 glass-ribbon"></div>
-            <div class="div-4 glass-ribbon"></div>
-            <div class="div-5 glass-ribbon"></div>
-            <div class="div-6 glass-ribbon"></div>
-            <div class="div-7 glass-ribbon"></div>
+            <button id="locate-btn" class="cta-button-radar">
+                Find Food Near Me 🍽️
+            </button>
         </div>
-    </div>
 
-    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
-</body>
-</html>
+        <!-- GLASS RIBBONS -->
+        <div class="div-2 glass-ribbon"></div>
+        <div class="div-3 glass-ribbon"></div>
+        <div class="div-4 glass-ribbon"></div>
+        <div class="div-5 glass-ribbon"></div>
+        <div class="div-6 glass-ribbon"></div>
+        <div class="div-7 glass-ribbon"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,13 @@
+#map {
+    min-height: 420px;
+    width: 100%;
+}
+
+.restaurant-card.selected {
+    outline: 3px solid #2f80ed;
+    outline-offset: 2px;
+}
+
+.view-on-map-button {
+    cursor: pointer;
+}

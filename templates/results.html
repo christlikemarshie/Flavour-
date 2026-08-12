@@ -1,36 +1,112 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Nearby Restaurants</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TasteQuest | Nearby Restaurants</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/results.css') }}">
 </head>
 <body>
-
-    <h1>Restaurants near you</h1>
+    <header class="results-header">
+        <a class="back-link" href="/"> Search another area </a>
+        <h1>Restaurants near you</h1>
+        {% if restaurants %}
+            <p>
+                {{ restaurants|length }} restaurant{% if restaurants|length != 1 %}s{% endif %} found nearby.
+            </p>
+        {% else %}
+            <p>No nearby restaurants were found.</p>
+        {% endif %}
+    </header>
 
     {% if restaurants %}
-        <ul>
+        <main class="results-page">
+            <section class="map-section" aria-labelledby="map-heading">
+                <h2 id="map-heading">Map</h2>
+                <!-- Leaflet will render the interactive map here in static/js/results.js. -->
+                <div 
+                    id="map" 
+                    role="region" 
+                    aria-label="Map of nearby restaurants" 
+                    data-user-lat="{{ user_latitude if user_latitude is not none else '' }}" 
+                    data-user-lon="{{ user_longitude if user_longitude is not none else '' }}"
+                ></div>
+            </section>
 
-            {% for r in restaurants %}
-                <li>
-
-                    <strong>{{ r.name }}</strong><br>
-                    Cuisine:
-                    {{ r.cuisine }}<br>
-
-                    Address:
-                    {{ r.address }}<br>
-
-                    Location:
-                    {{ r.lat }}, {{ r.lon }}
-
-                </li>
-
-            {% endfor %}
-        </ul>
-
+            <section class="restaurant-section" aria-labelledby="restaurant-heading">
+                <h2 id="restaurant-heading"> Nearby places </h2>
+                <div class="restaurants-grid">
+                    {% for restaurant in restaurants %}
+                        <article 
+                            class="restaurant-card" 
+                            id="restaurant-card-{{ loop.index0 }}" 
+                            data-restaurant-index="{{ loop.index0 }}" 
+                            data-lat="{{ restaurant.lat }}" 
+                            data-lon="{{ restaurant.lon }}"
+                        >
+                            <div class="restaurant-card__image" aria-hidden="true">
+                                <span>Restaurant</span>
+                            </div>
+                            
+                            <div class="restaurant-card__content">
+                                <h3>{{ restaurant.name }}</h3>
+                                
+                                {% if restaurant.cuisine %}
+                                    <p class="restaurant-card__detail">
+                                        <span>Cuisine:</span> {{ restaurant.cuisine }}
+                                    </p>
+                                {% endif %}
+                                
+                                {% if restaurant.address %}
+                                    <p class="restaurant-card__detail">
+                                        <span>Address:</span> {{ restaurant.address }}
+                                    </p>
+                                {% endif %}
+                                
+                                {% if restaurant.distance is defined %}
+                                    <p class="restaurant-card__detail restaurant-card__distance">
+                                        {{ restaurant.distance }} km away
+                                    </p>
+                                {% endif %}
+                                
+                                {% if restaurant.phone is defined and restaurant.phone %}
+                                    <p class="restaurant-card__detail">
+                                        <span>Phone:</span> {{ restaurant.phone }}
+                                    </p>
+                                {% endif %}
+                                
+                                {% if restaurant.opening_hours is defined and restaurant.opening_hours %}
+                                    <p class="restaurant-card__detail">
+                                        <span>Hours:</span> {{ restaurant.opening_hours }}
+                                    </p>
+                                {% endif %}
+                                
+                                {% if restaurant.website is defined and restaurant.website %}
+                                    <p class="restaurant-card__detail">
+                                        <a href="{{ restaurant.website }}" target="_blank" rel="noopener noreferrer">
+                                            Visit website
+                                        </a>
+                                    </p>
+                                {% endif %}
+                                
+                                <button class="view-on-map-button" type="button" data-restaurant-index="{{ loop.index0 }}">
+                                    View on map
+                                </button>
+                            </div>
+                        </article>
+                    {% endfor %}
+                </div>
+            </section>
+        </main>
     {% else %}
-        <p>No restaurants were found nearby.</p>
+        <main class="empty-results">
+            <p> Try searching again from a nearby location. </p>
+            <a href="/"> Search again </a>
+        </main>
     {% endif %}
 
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <script src="{{ url_for('static', filename='js/results.js') }}"></script>
 </body>
 </html>

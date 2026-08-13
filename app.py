@@ -1,16 +1,12 @@
 from flask import Flask, jsonify, render_template, request, session
-
 from helper import get_restaurants
-
 
 app = Flask(__name__)
 app.secret_key = "secretkey"
 
-
 @app.route("/")
 def index():
     return render_template("index.html")
-
 
 @app.route("/search", methods=["POST"])
 def search():

@@ -1,13 +1,326 @@
+/* ========================================================= 
+   RESULTS PAGE 
+   ========================================================= */
+.results-page {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(420px, 1.1fr);
+    gap: 28px;
+    align-items: start;
+    width: min(1400px, 94%);
+    margin: 0 auto;
+}
+
+/* ========================================================= 
+   RESULTS HEADER 
+   ========================================================= */
+.results-header {
+    width: min(1400px, 94%);
+    margin: 0 auto 28px;
+}
+
+.results-header h1 {
+    margin: 8px 0;
+}
+
+.results-header p {
+    margin: 0;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+/* ========================================================= 
+   SECTION HEADINGS 
+   ========================================================= */
+.map-section h2, 
+.restaurant-section h2 {
+    margin: 0 0 12px;
+}
+
+/* ========================================================= 
+   MAP 
+   ========================================================= */
+.map-section {
+    position: sticky;
+    top: 20px;
+}
+
 #map {
-    min-height: 420px;
     width: 100%;
+    height: 650px;
+    min-height: 420px;
+    border-radius: 18px;
+    overflow: hidden;
 }
 
-.restaurant-card.selected {
-    outline: 3px solid #2f80ed;
-    outline-offset: 2px;
+/* ========================================================= 
+   RESTAURANT LIST 
+   ========================================================= */
+.restaurant-section {
+    min-width: 0;
 }
 
+.restaurants-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+}
+
+/* ========================================================= 
+   RESTAURANT CARD 
+   ========================================================= */
+.restaurant-card {
+    display: grid;
+    grid-template-columns: 190px minmax(0, 1fr);
+
+    width: 100%;
+    min-width: 0;
+
+    overflow: hidden;
+    border-radius: 18px;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 4px 8px rgba(0, 0, 0, 0.08),
+        0 10px 20px rgba(0, 0, 0, 0.10),
+        0 20px 40px rgba(0, 0, 0, 0.08);
+
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        outline 0.2s ease;
+}
+
+/* Card hover */
+.restaurant-card:hover {
+    transform: translateY(-6px);
+
+    box-shadow:
+        0 6px 12px rgba(0, 0, 0, 0.10),
+        0 15px 30px rgba(0, 0, 0, 0.13),
+        0 25px 50px rgba(0, 0, 0, 0.10);
+}
+
+/* ========================================================= 
+   RESTAURANT IMAGE 
+   ========================================================= */
+.restaurant-card__image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 220px;
+    background: #eeeeee;
+    overflow: hidden;
+}
+
+.restaurant-card__image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.restaurant-card__image span {
+    font-size: 0.95rem;
+    font-weight: 600;
+    opacity: 0.65;
+}
+
+/* ========================================================= 
+   CARD CONTENT 
+   ========================================================= */
+.restaurant-card__content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 0;
+    padding: 20px;
+}
+
+.restaurant-card h3 {
+    margin: 0 0 8px;
+    font-size: 1.35rem;
+    line-height: 1.2;
+    overflow-wrap: anywhere;
+}
+
+/* ========================================================= 
+   CARD DETAILS 
+   ========================================================= */
+.restaurant-card__detail {
+    width: 100%;
+    margin: 5px 0;
+    line-height: 1.45;
+    overflow-wrap: anywhere;
+}
+
+.restaurant-card__detail span {
+    font-weight: 600;
+}
+
+.restaurant-card__distance {
+    margin-top: 8px;
+    font-weight: 700;
+}
+
+/* ========================================================= 
+   WEBSITE 
+   ========================================================= */
+.restaurant-card__detail a {
+    overflow-wrap: anywhere;
+}
+
+/* ========================================================= 
+   VIEW ON MAP BUTTON 
+   ========================================================= */
 .view-on-map-button {
+    margin-top: 15px;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 10px;
+    font: inherit;
+    font-weight: 600;
     cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.view-on-map-button:hover {
+    transform: translateY(-1px);
+}
+
+.view-on-map-button:active {
+    transform: translateY(0);
+}
+
+/* ========================================================= 
+   SELECTED RESTAURANT 
+   ========================================================= */
+.restaurant-card.selected {
+    outline: 3px solid #3b82f6;
+    outline-offset: 3px;
+}
+
+/* ========================================================= 
+   EMPTY RESULTS 
+   ========================================================= */
+.empty-results {
+    width: min(700px, 90%);
+    margin: 60px auto;
+    text-align: center;
+}
+
+/* ========================================================= 
+   TABLET 
+   ========================================================= */
+@media (max-width: 1000px) {
+    .results-page {
+        grid-template-columns: 1fr;
+    }
+
+    .map-section {
+        position: relative;
+        top: auto;
+    }
+
+    #map {
+        height: 500px;
+    }
+
+    .restaurants-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .restaurant-card {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .restaurant-card__image {
+        min-height: 180px;
+    }
+}
+
+/* ========================================================= 
+   MOBILE 
+   ========================================================= */
+@media (max-width: 650px) {
+    .results-page {
+        width: 92%;
+        gap: 22px;
+    }
+
+    .results-header {
+        width: 92%;
+        margin-bottom: 22px;
+    }
+
+    #map {
+        height: 360px;
+        min-height: 300px;
+        border-radius: 14px;
+    }
+
+    .restaurants-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .restaurant-card {
+        display: flex;
+        flex-direction: column;
+        border-radius: 16px;
+    }
+
+    .restaurant-card__image {
+        width: 100%;
+        height: 190px;
+        min-height: 190px;
+    }
+
+    .restaurant-card__content {
+        padding: 17px;
+    }
+
+    .restaurant-card h3 {
+        font-size: 1.2rem;
+    }
+
+    .restaurant-card__detail {
+        font-size: 0.95rem;
+    }
+
+    .view-on-map-button {
+        width: 100%;
+        padding: 12px;
+    }
+}
+
+/* ========================================================= 
+   SMALL PHONES 
+   ========================================================= */
+@media (max-width: 400px) {
+    .results-page, 
+    .results-header {
+        width: 94%;
+    }
+
+    #map {
+        height: 320px;
+    }
+
+    .restaurant-card__image {
+        height: 170px;
+        min-height: 170px;
+    }
+
+    .restaurant-card__content {
+        padding: 15px;
+    }
+
+    .restaurant-card h3 {
+        font-size: 1.1rem;
+    }
 }

@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const mapLocations = [];
 
     L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
-        maxZoom: 19,
+        maxZoom: 20,
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
     }).addTo(map);
 
@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         selectCard(index);
-        map.flyTo(marker.getLatLng(), 16, { duration: 0.5 });
+        map.flyTo(marker.getLatLng(), 18, { duration: 0.5 });
         marker.openPopup();
 
         if (scrollToCard) {
@@ -104,7 +104,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (mapLocations.length > 1) {
-        map.fitBounds(mapLocations, { padding: [30, 30], maxZoom: 15 });
+        map.fitBounds(mapLocations, { padding: [30, 30], maxZoom: 17});
     } else if (mapLocations.length === 1) {
         map.setView(mapLocations[0], 15);
     } else {

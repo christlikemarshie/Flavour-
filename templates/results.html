@@ -48,8 +48,10 @@ TasteQuest | Nearby Restaurants
                         data-lat="{{ restaurant.lat }}" 
                         data-lon="{{ restaurant.lon }}"
                     >
-                        <div class="restaurant-card__image" aria-hidden="true">
-                            <span> Restaurant </span>
+                       <div class="restaurant-card__image">
+                           <img 
+                                src="{{ restaurant.image }}" 
+                                alt="{{ restaurant.name }}">           
                         </div>
                         
                         <div class="restaurant-card__content">

@@ -71,6 +71,42 @@ def get_website(tags):
         return f"https://{website}"
 
     return website
+def get_restaurant_image(tags, cuisine):
+    image = tags.get("image") or tags.get("contact:image")
+
+    if image:
+        return image
+
+    cuisine_lower = cuisine.lower()
+
+    if "indian" in cuisine_lower:
+        return "/static/images/fallbacks/indian.jpg"
+
+    if "italian" in cuisine_lower:
+        return "/static/images/fallbacks/italian.jpg"
+
+    if "chinese" in cuisine_lower:
+        return "/static/images/fallbacks/chinese.jpg"
+
+    if "pizza" in cuisine_lower:
+        return "/static/images/fallbacks/pizza.jpg"
+
+    if "burger" in cuisine_lower:
+        return "/static/images/fallbacks/burger.jpg"
+
+    if "japanese" in cuisine_lower or "sushi" in cuisine_lower:
+        return "/static/images/fallbacks/japanese.jpg"
+
+    if "mexican" in cuisine_lower:
+        return "/static/images/fallbacks/mexican.jpg"
+
+    if "thai" in cuisine_lower:
+        return "/static/images/fallbacks/thai.jpg"
+
+    if "local" in cuisine_lower:
+        return "/static/images/fallbacks/local.jpg"
+
+    return "/static/images/fallbacks/restaurant.jpg"
 
 
 def get_restaurants(latitude, longitude):
@@ -186,10 +222,7 @@ out center;
                 ),
                 "website": get_website(tags),
                 "opening_hours": tags.get("opening_hours"),
-                "image": (
-                    tags.get("image")
-                    or tags.get("contact:image")
-                ),
+                "image": get_restaurant_image(tags, cuisine), 
                 "lat": restaurant_lat,
                 "lon": restaurant_lon,
                 "distance": round(
@@ -209,3 +242,4 @@ out center;
     )
 
     return restaurants
+

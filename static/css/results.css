@@ -74,14 +74,14 @@
 .restaurant-card {
     display: grid;
     grid-template-columns: 190px minmax(0, 1fr);
-
+    align-items: stretch;
+    overflow: hidden;
     width: 100%;
     min-width: 0;
 
-    overflow: hidden;
     border-radius: 18px;
 
-    background: #ffffff;
+    background: #dad9d9;
 
     box-shadow:
         0 4px 8px rgba(0, 0, 0, 0.08),
@@ -97,6 +97,9 @@
 /* Card hover */
 .restaurant-card:hover {
     transform: translateY(-6px) ;
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.25s ease;
   
 
 
@@ -113,7 +116,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 220px;
+    height: 100%;
     background: #eeeeee;
     overflow: hidden;
 }
@@ -170,6 +173,7 @@
 
 /* ========================================================= 
    WEBSITE 
+    width: 100%;
    ========================================================= */
 .restaurant-card__detail a {
     overflow-wrap: anywhere;
@@ -178,30 +182,50 @@
 /* ========================================================= 
    VIEW ON MAP BUTTON 
    ========================================================= */
+
 .view-on-map-button {
-    margin-top: 15px;
-    padding: 10px 16px;
+    padding: 12px 18px;
     border: none;
-    border-radius: 10px;
-    font: inherit;
+    border-radius: 50px;
+    background: linear-gradient(135deg, #111010, #201f1f);
+    color: white;
+    font-size: 15px;
     font-weight: 600;
-    cursor: pointer;
-    transition: transform 0.2s ease, opacity 0.2s ease;
+
+    transition:transform 0.3s ease,box-shadow 0.3s ease, background 0.3s ease,border-color 0.3s ease;
+
 }
 
 .view-on-map-button:hover {
     transform: translateY(-1px);
+
+    background: linear-gradient(
+        135deg,
+        #000000,
+        #424242
+    );
+
+    transform: translateY(-3px);
+    transition:
+        transform 0.4s ease,
+        box-shadow 0.2s ease;
+
+    box-shadow:
+        0 10px 20px rgba(0, 0, 0, 0.25);
 }
+
 
 .view-on-map-button:active {
     transform: translateY(0);
+    background:#fff9f9;
+    color:rgb(32, 30, 30)
 }
 
 /* ========================================================= 
    SELECTED RESTAURANT 
    ========================================================= */
 .restaurant-card.selected {
-    outline: 3px solid #3b82f6;
+    outline: 3px solid #3b3a3a;
     outline-offset: 3px;
 }
 

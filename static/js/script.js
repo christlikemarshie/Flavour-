@@ -1,14 +1,16 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const locateBtn = document.getElementById("locate-btn");
 
-    const scanAgainBtn = document.querySelector(".cta-button-radar[href='/']");
-    if (scanAgainBtn) {
-        scanAgainBtn.addEventListener("click", function () {
-            localStorage.removeItem("tastequest_lat");
-            localStorage.removeItem("tastequest_lon");
-            console.log("🔄 GPS memory cleared.");
-        });
-    }
+    // =========================================================
+    // SEARCH ANOTHER AREA
+    // =========================================================
+
+
+
+    // =========================================================
+    // LOCATE BUTTON
+    // =========================================================
+
+    const locateBtn = document.getElementById("locate-btn");
 
     if (!locateBtn) return;
 
@@ -34,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(successCallback, errorCallback, {
                 enableHighAccuracy: false,
-                timeout: 10000,
+                timeout: 120000,
                 maximumAge: 300000
             });
         } else {

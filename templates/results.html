@@ -12,11 +12,26 @@ TasteQuest | Nearby Restaurants
 {% block content %}
 <header class="results-header">
       
-      <a class="back-link" href="/"> Search another area </a>
+<a 
+    class="back-link" 
+    href="/"
+    onclick="
+        localStorage.removeItem('tastequest_lat');
+        localStorage.removeItem('tastequest_lon');
+        console.log('🔄 GPS memory cleared.');
+    "
+>
+    <span class="back-link__icon">←</span>
+    Search another area
+</a>
     <h1>Restaurants near you</h1>
     {% if restaurants %}
         <p>
-            {{ restaurants|length }} restaurant{% if restaurants|length != 1 %}s{% endif %} found nearby.
+          <span class="results-count__icon">🍴</span>
+          <span>
+             {{ restaurants|length }} restaurant{% if restaurants|length != 1 %}s{% endif %} found nearby.
+          </span>
+           
         </p>
     {% else %}
         <p> No nearby restaurants were found. </p>
@@ -27,19 +42,24 @@ TasteQuest | Nearby Restaurants
     <main class="results-page">
         <!-- MAP -->
         <section class="map-section" aria-labelledby="map-heading">
-            <h2 id="map-heading"> Map </h2>
+           <h2 id="map-heading" class="section-heading">
+                <span class="section-heading__icon">⌗</span>
+                <span>Map</span>
+           </h2>  
             <div 
                 id="map" 
                 role="region" 
                 aria-label="Map of nearby restaurants" 
                 data-user-lat="{{ user_latitude if user_latitude is not none else '' }}" 
-                data-user-lon="{{ user_longitude if user_longitude is not none else '' }}"
-            ></div>
+                data-user-lon="{{ user_longitude if user_longitude is not none else '' }}"></div>
         </section>
 
         <!-- RESTAURANTS -->
         <section class="restaurant-section" aria-labelledby="restaurant-heading">
-            <h2 id="restaurant-heading"> Nearby places </h2>
+            <h2 id="restaurant-heading" class="section-heading">
+                  <span class="section-heading__icon">★</span>
+                  <span>Nearby places</span>
+            </h2>
             <div class="restaurants-grid">
                 {% for restaurant in restaurants %}
                     <article 
@@ -47,8 +67,7 @@ TasteQuest | Nearby Restaurants
                         id="restaurant-card-{{ loop.index0 }}" 
                         data-restaurant-index="{{ loop.index0 }}" 
                         data-lat="{{ restaurant.lat }}" 
-                        data-lon="{{ restaurant.lon }}"
-                    >
+                        data-lon="{{ restaurant.lon }}">
                        <div class="restaurant-card__image">
                            <img 
                                 src="{{ restaurant.image }}" 

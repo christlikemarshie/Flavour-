@@ -2,7 +2,9 @@
 html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background-color: #0d1117; }
 spline-viewer { width: 100% !important; height: 100% !important; }
 .spline-background { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 1; }
-
+body {
+    font-family: "Inter", sans-serif !important;
+}
 /* GLASS OVERLAY */
 .glass-effect { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 10; overflow: hidden; pointer-events: none !important; background: rgba(255,255,255,0.05); transition: backdrop-filter 0.9s ease, -webkit-backdrop-filter 0.9s ease; }
 .glass-effect .div { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }

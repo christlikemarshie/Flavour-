@@ -1,6 +1,12 @@
 /* ========================================================= 
    RESULTS PAGE 
    ========================================================= */
+
+.results-page,
+.results-header,
+.empty-results {
+    font-family: "Inter", sans-serif;
+}
 .results-page {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(420px, 1.1fr);
@@ -19,8 +25,15 @@
 }
 
 .results-header h1 {
-    margin: 8px 0;
+   
+    font-family: "Inter", sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 0;
 }
+
+
 
 .results-header p {
     margin: 0;
@@ -37,6 +50,10 @@
 .map-section h2, 
 .restaurant-section h2 {
     margin: 0 0 12px;
+    font-family: "Inter", sans-serif;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.2;
 }
 
 /* ========================================================= 
@@ -72,6 +89,8 @@
    RESTAURANT CARD 
    ========================================================= */
 .restaurant-card {
+    font-family: "Inter", sans-serif;
+
     display: grid;
     grid-template-columns: 190px minmax(0, 1fr);
     align-items: stretch;
@@ -84,9 +103,9 @@
     background: #dad9d9;
 
     box-shadow:
-        0 4px 8px rgba(0, 0, 0, 0.08),
-        0 10px 20px rgba(0, 0, 0, 0.10),
-        0 20px 40px rgba(0, 0, 0, 0.08);
+        0 10px 10px rgba(0, 0, 0, 0.08),
+        0 13px 20px rgba(0, 0, 0, 0.10),
+        0 30px 40px rgba(0, 0, 0, 0.08);
 
     transition:
         transform 0.25s ease,
@@ -147,8 +166,9 @@
 
 .restaurant-card h3 {
     margin: 0 0 8px;
-    font-size: 1.35rem;
-    line-height: 1.2;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 28px;
     overflow-wrap: anywhere;
 }
 
@@ -157,10 +177,22 @@
    ========================================================= */
 .restaurant-card__detail {
     width: 100%;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
     margin: 5px 0;
-    line-height: 1.45;
     overflow-wrap: anywhere;
 }
+
+.restaurant-card__detail svg {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+   
+    color: #4d6aa8;
+    stroke-width: 2;
+}
+
 
 .restaurant-card__detail span {
     font-weight: 600;
@@ -168,7 +200,9 @@
 
 .restaurant-card__distance {
     margin-top: 8px;
-    font-weight: 700;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 20px;
 }
 
 /* ========================================================= 
@@ -189,11 +223,21 @@
     border-radius: 50px;
     background: linear-gradient(135deg, #111010, #201f1f);
     color: white;
-    font-size: 15px;
+    font-family: "Inter", sans-serif;
+    font-size: 14px;
     font-weight: 600;
+    line-height: 20px;
 
     transition:transform 0.3s ease,box-shadow 0.3s ease, background 0.3s ease,border-color 0.3s ease;
 
+}
+.view-on-map-button svg{
+    width: 18px;
+    height: 18px;
+    margin-right: 6px;
+    flex-shrink: 0;
+    color: #ffffff;
+    stroke-width: 2;
 }
 
 .view-on-map-button:hover {

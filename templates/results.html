@@ -11,7 +11,8 @@ TasteQuest | Nearby Restaurants
 
 {% block content %}
 <header class="results-header">
-    <a class="back-link" href="/"> Search another area </a>
+      
+      <a class="back-link" href="/"> Search another area </a>
     <h1>Restaurants near you</h1>
     {% if restaurants %}
         <p>
@@ -59,36 +60,42 @@ TasteQuest | Nearby Restaurants
                             
                             {% if restaurant.cuisine %}
                                 <p class="restaurant-card__detail">
+                                    <i data-lucide="utensils"></i>
                                     <span> Cuisine: </span> {{ restaurant.cuisine }}
                                 </p>
                             {% endif %}
                             
                             {% if restaurant.address %}
                                 <p class="restaurant-card__detail">
+                                    <i data-lucide="map-pin"></i>
                                     <span> Address: </span> {{ restaurant.address }}
                                 </p>
                             {% endif %}
                             
                             {% if restaurant.distance is defined %}
                                 <p class="restaurant-card__detail restaurant-card__distance">
+                                    <i data-lucide="navigation"></i>
                                     {{ restaurant.distance }} km away
                                 </p>
                             {% endif %}
                             
                             {% if restaurant.phone is defined and restaurant.phone %}
                                 <p class="restaurant-card__detail">
+                                    <i data-lucide="phone"></i>
                                     <span> Phone: </span> {{ restaurant.phone }}
                                 </p>
                             {% endif %}
                             
                             {% if restaurant.opening_hours is defined and restaurant.opening_hours %}
                                 <p class="restaurant-card__detail">
+                                    <i data-lucide="clock"></i>
                                     <span> Hours: </span> {{ restaurant.opening_hours }}
                                 </p>
                             {% endif %}
                             
                             {% if restaurant.website is defined and restaurant.website %}
                                 <p class="restaurant-card__detail">
+                                    <i data-lucide="globe"></i>
                                     <a href="{{ restaurant.website }}" target="_blank" rel="noopener noreferrer">
                                         Visit website
                                     </a>
@@ -96,6 +103,7 @@ TasteQuest | Nearby Restaurants
                             {% endif %}
                             
                             <button class="view-on-map-button" type="button" data-restaurant-index="{{ loop.index0 }}">
+                                <i data-lucide="map"></i>
                                 View on map
                             </button>
                         </div>
@@ -115,4 +123,5 @@ TasteQuest | Nearby Restaurants
 {% block scripts %}
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script src="{{ url_for('static', filename='js/results.js') }}"></script>
+<script> lucide.createIcons() </script>
 {% endblock %}

@@ -42,3 +42,110 @@ body {
 /* HOVER BLUR EFFECTS */
 .glass-effect:has(.cta-button-radar:hover),
 .glass-effect .cta-button-radar:hover ~ .texture-grain { backdrop-filter: blur(25px) !important; -webkit-backdrop-filter: blur(25px) !important; }
+
+/* =========================================================
+   FLAVOUR LOADING OVERLAY
+   ========================================================= */
+
+.flavour-loading-overlay {
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(255, 255, 255, 0.28);
+    backdrop-filter: blur(0px);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition:
+        opacity 0.45s ease,
+        visibility 0.45s ease,
+        backdrop-filter 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+
+    z-index: 9999;
+}
+
+/* Active state */
+
+.flavour-loading-overlay.active {
+    opacity: 1;
+    visibility: visible;
+
+    backdrop-filter: blur(14px);
+}
+
+/* =========================================================
+   LOADER
+   ========================================================= */
+
+
+
+.flavour-loading-overlay.active .flavour-loader {
+    transform: scale(1) translateY(0);
+}
+
+/* =========================================================
+   BOWL
+   ========================================================= */
+
+.flavour-bowl {
+    width: 60px;
+    height: 60px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: rgba(225, 224, 224, 0.75);
+
+    box-shadow:
+        0 12px 30px rgba(0, 0, 0, 0.14);
+
+    animation: flavour-bowl-spin 3s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+}
+
+.flavour-bowl svg {
+    width: 44px;
+    height: 44px;
+
+    stroke-width: 1.8;
+}
+
+/* =========================================================
+   SMOOTH ROTATION
+   ========================================================= */
+
+@keyframes flavour-bowl-spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    45% {
+        transform: rotate(170deg);
+    }
+    55% {
+        transform: rotate(190deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* =========================================================
+   TEXT
+   ========================================================= */
+
+.flavour-loader p {
+    font-family: "Caveat", Sans-serif;
+    margin: 12px -25px 0;
+
+    font-size: 26px;
+    font-weight: 400;
+
+    letter-spacing: 0.02em;
+}

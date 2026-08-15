@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}
-Taste Quest | Local Restaurant Locator
+    Flavour 
 {% endblock %}
 
 {% block styles %}
@@ -29,7 +29,8 @@ Taste Quest | Local Restaurant Locator
                 anywhere
             </div>
             <button id="locate-btn" class="cta-button-radar">
-                Find Food Near Me 🍽️
+                <i data-lucide="search"></i>
+                Find Food Near Me 
             </button>
         </div>
 
@@ -42,8 +43,24 @@ Taste Quest | Local Restaurant Locator
         <div class="div-7 glass-ribbon"></div>
     </div>
 </div>
+<!-- FLAVOUR LOADING OVERLAY -->
+<div id="flavour-loading-overlay" class="flavour-loading-overlay">
+
+    <div class="flavour-loader">
+
+        <div class="flavour-bowl">
+            <i data-lucide="soup"></i>
+        </div>
+
+        <p>Searching....</p>
+
+    </div>
+
+</div>
+
 {% endblock %}
 
 {% block scripts %}
 <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+<script> lucide.createIcons() </script>
 {% endblock %}

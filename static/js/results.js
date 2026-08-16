@@ -29,22 +29,24 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    function showRestaurantOnMap(index, scrollToCard) {
-        const marker = markerByIndex.get(index);
-        const card = cardByIndex.get(index);
+function showRestaurantOnMap(index) {
+    const marker = markerByIndex.get(index);
+    const card = cardByIndex.get(index);
 
-        if (!marker || !card) {
-            return;
-        }
-
-        selectCard(index);
-        map.flyTo(marker.getLatLng(), 18, { duration: 0.5 });
-        marker.openPopup();
-
-        if (scrollToCard) {
-            card.scrollIntoView({ behavior: "smooth", block: "nearest" });
-        }
+    if (!marker || !card) {
+        return;
     }
+
+    selectCard(index);
+
+    mapElement.scrollIntoView({
+        behavior: "smooth",
+        block: "start"
+    });
+
+    map.flyTo(marker.getLatLng(), 18, { duration: 0.5 });
+    marker.openPopup();
+}
 
     function createPopup(card) {
         const popup = document.createElement("div");

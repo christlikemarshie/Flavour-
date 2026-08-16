@@ -120,4 +120,20 @@ function showRestaurantOnMap(index) {
     });
 
     requestAnimationFrame(() => map.invalidateSize());
+    /* =========================================================
+   BACK TO TOP
+   ========================================================= */
+const backToTopButton = document.getElementById("backToTop");
+
+if (backToTopButton) {
+  backToTopButton.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+}
+
+// Optional: ensure map resizes correctly after scroll
+requestAnimationFrame(() => {
+  if (typeof map !== "undefined") map.invalidateSize();
+});
+
 });

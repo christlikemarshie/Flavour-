@@ -130,6 +130,9 @@
                     </article>
                 {% endfor %}
             </div>
+            <button id="backToTop" class="back-to-top" aria-label="Back to top">
+               <i data-lucide="arrow-up"></i>
+           </button>
         </section>
     </main>
 {% else %}
@@ -138,10 +141,79 @@
         <a href="/"> Search again </a>
     </main>
 {% endif %}
+<!-- =========================================================
+     FLAVOUR FOOTER
+     ========================================================= -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <!-- BRAND -->
+    <div class="footer-column footer-brand">
+      <a href="{{ url_for('index') }}" class="footer-logo">FLAVOUR</a>
+      <p class="footer-description">Discover the best restaurants around you. Real places. Real flavours.</p>
+    </div>
+
+    <!-- EXPLORE -->
+    <div class="footer-column">
+      <h3 class="footer-heading">EXPLORE</h3>
+      <nav class="footer-links">
+        <a href="{{ url_for('index') }}">Home</a>
+        <a href="{{ url_for('index') }}">Find Restaurants</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#about">About Flavour</a>
+      </nav>
+    </div>
+
+    <!-- CONNECT -->
+    <div class="footer-column">
+      <h3 class="footer-heading">CONNECT</h3>
+      <div class="footer-contact">
+        <!-- WHATSAPP -->
+        <a href="https://wa.me/+265988199861" target="_blank" rel="noopener noreferrer" class="footer-contact-item">
+          <span class="footer-icon">☎</span>
+          <span><strong>WhatsApp</strong><small>+265 988 199 861</small></span>
+        </a>
+        <!-- EMAIL -->
+        <a href="mailto:theemarshieman@gmail.com" class="footer-contact-item">
+          <span class="footer-icon">✉</span>
+          <span><strong>Email</strong><small>theemarshieman@gmail.com</small></span>
+        </a>
+      </div>
+    </div>
+
+    <!-- ABOUT / PERSONAL BRAND -->
+    <div class="footer-column footer-about">
+      <h3 class="footer-heading">ABOUT</h3>
+      <p class="footer-designed">Designed & developed by</p>
+      <p class="footer-name">Wellington Marshie</p>
+      <p class="footer-role">Creative Technologist & Fine Artist</p>
+      <p class="footer-skills">Design · Code · Deploy</p>
+    </div>
+  </div>
+
+  <!-- FOOTER BOTTOM -->
+  <div class="footer-bottom">
+    <div class="footer-copyright">
+      © 2026 ChristlikeMarshieman
+    </div>
+    <div class="footer-map-credit">
+      Map data © <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">OpenStreetMap contributors</a>
+    </div>
+    <!-- SOCIALS -->
+    <div class="footer-socials">
+      <a href="https://wa.me/YOUR_NUMBER" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">WA</a>
+      <a href="YOUR_GITHUB_URL" target="_blank" rel="noopener noreferrer" aria-label="GitHub">GH</a>
+      <a href="YOUR_INSTAGRAM_URL" target="_blank" rel="noopener noreferrer" aria-label="Instagram">IG</a>
+      <a href="YOUR_LINKEDIN_URL" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">IN</a>
+    </div>
+  </div>
+</footer>
+
 {% endblock %}
 
 {% block scripts %}
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
 <script src="{{ url_for('static', filename='js/results.js') }}"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
 <script> lucide.createIcons() </script>
+
 {% endblock %}

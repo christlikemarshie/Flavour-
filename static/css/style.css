@@ -2,6 +2,41 @@
 html, body { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background-color: #0d1117; }
 spline-viewer { width: 100% !important; height: 100% !important; }
 .spline-background { position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: 1; }
+/* =========================================================
+   BACKGROUND SWITCHING
+   ========================================================= */
+.desktop-spline { display: block; }
+.mobile-rive { display: none; }
+
+/* =========================================================
+   MOBILE BACKGROUND
+   ========================================================= */
+@media (max-width: 650px) {
+   body{background: #291818;} 
+     .glass-ribbon { display: none; }
+    .desktop-spline { display: none; }
+    .mobile-rive {
+        display: block;
+        position: fixed;
+        inset: 0;
+        width: 100vw;
+        height: 100vh;
+        z-index: 1;
+        overflow: hidden;
+        pointer-events: none;
+    }
+     .mobile-rive dotlottie-wc {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 100vmax;
+        height: 100vmax;
+        transform: translate(-50%, -50%);
+        display: block;
+    }
+    
+}
+
 body {
     font-family: "Inter", sans-serif ;
 }
@@ -10,7 +45,7 @@ body {
 .glass-effect .div { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
 
 /* COMPONENTS */
-.master-branding-logo { position: fixed; top: 30px; left: 70px; width: 80px; height: auto; z-index: 999 !important; pointer-events: none !important; }
+.master-branding-logo { position: fixed; top: 30px; left: 15px; width: 80px; height: auto; z-index: 999 !important; pointer-events: none !important; }
 .glass-effect .title { position: absolute; bottom: 60px; left: 70px; mix-blend-mode: hard-light; font-family: "Playfair Display", serif; font-weight: 100 !important; font-style: italic !important; color: #ded6cf; font-size: 200px; letter-spacing: -2px; line-height: 145px; text-transform: lowercase; }
 .glass-effect .title-and-button-row { position: absolute; bottom: 60px; left: 70px; display: flex; align-items: flex-end; gap: 20px; }
 
@@ -185,7 +220,7 @@ body {
 
     .glass-effect .title {
         left: -60px;
-        bottom: 100px;
+        bottom: 200px;
 
         font-size: 80px;
         line-height: 68px;

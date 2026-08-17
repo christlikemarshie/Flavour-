@@ -9,9 +9,28 @@
 {% endblock %}
 
 {% block content %}
-<!-- ELEMENT 1: THE BACK 3D LAYER -->
+<!-- =========================================================
+     LANDING BACKGROUND LAYER
+     ========================================================= -->
 <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.98/build/spline-viewer.js"></script>
-<spline-viewer url="https://prod.spline.design/FST76E63lpJEZS9n/scene.splinecode"></spline-viewer>
+
+<!-- DESKTOP BACKGROUND -->
+<div class="desktop-spline">
+    <spline-viewer class="spline-background" url="https://prod.spline.design/FST76E63lpJEZS9n/scene.splinecode"></spline-viewer>
+</div>
+
+<!-- MOBILE BACKGROUND -->
+<div class="mobile-rive">
+    <!-- RIVE WILL GO HERE -->
+     <div class="mobile-rive">
+    <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.9.4/dist/dotlottie-wc.js" type="module"></script>
+    <dotlottie-wc 
+       src="https://lottie.host/120be638-cccb-4a27-94d0-d86eaf76569e/PJrZ6JWZRd.lottie" 
+       autoplay 
+       loop>
+    </dotlottie-wc>
+</div>
+</div>
 
 <!-- ELEMENT 2: THE FOREGROUND INTERFACE OVERLAY -->
 <div class="glass-effect">
@@ -23,8 +42,8 @@
         <div class="title-and-button-row">
             <div class="title">
                 find <br>
-                food<br>
-                anywhere
+                food
+            
             </div>
             <button id="locate-btn" class="cta-button-radar">
                 <i data-lucide="search"></i>

@@ -1,8 +1,12 @@
+import os
+from dotenv import load_dotenv
 from flask import Flask, jsonify, render_template, request, session
 from helper import get_restaurants
 
+load_dotenv()
+
 app = Flask(__name__)
-app.secret_key = "secretkey"
+app.secret_key = os.environ.get("SECRET_KEY")
 
 @app.route("/")
 def index():

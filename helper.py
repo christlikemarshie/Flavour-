@@ -114,7 +114,7 @@ def get_restaurants(latitude, longitude):
     Search OpenStreetMap through Overpass and return nearby restaurants.
     """
 
-    offset = 0.04 
+    offset = 0.04
 
     min_lat = latitude - offset
     min_lon = longitude - offset
@@ -222,7 +222,7 @@ out center;
                 ),
                 "website": get_website(tags),
                 "opening_hours": tags.get("opening_hours"),
-                "image": get_restaurant_image(tags, cuisine), 
+                "image": get_restaurant_image(tags, cuisine),
                 "lat": restaurant_lat,
                 "lon": restaurant_lon,
                 "distance": round(

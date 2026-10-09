@@ -3,7 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Flavour helps you discover nearby restaurants, view them on a map, and explore cuisine, contact details, opening hours, and distance from your location.">
+    <meta name="description" content="{% block description %}Discover restaurants near you with Flavour. Find local places to eat, explore cuisines, and view nearby restaurants on a map.{% endblock %}">
+    {% block robots %}<meta name="robots" content="index, follow, max-image-preview:large">{% endblock %}
+    {% block canonical %}<link rel="canonical" href="{{ canonical_url }}">{% endblock %}
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Flavour">
+    <meta property="og:title" content="{% block social_title %}Flavour — Find Food Near You{% endblock %}">
+    <meta property="og:description" content="Discover restaurants near you with Flavour. Find local places to eat, explore cuisines, and view nearby restaurants on a map.">
+    <meta property="og:url" content="{{ canonical_url }}">
+    <meta name="twitter:card" content="summary">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -14,6 +22,8 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <title>{% block title %}Flavour{% endblock %}</title>
+
+    {% block structured_data %}{% endblock %}
 
     {% block styles %}
     {% endblock %}

@@ -1,7 +1,21 @@
 {% extends "base.html" %}
 
 {% block title %}
-    Flavour 
+    Flavour — Find Food Near You
+{% endblock %}
+
+{% block structured_data %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Flavour",
+  "applicationCategory": "LifestyleApplication",
+  "operatingSystem": "Any",
+  "description": "Discover restaurants near you, explore cuisines, and view nearby places to eat on a map.",
+  "url": {{ canonical_url|tojson }}
+}
+</script>
 {% endblock %}
 
 {% block styles %}

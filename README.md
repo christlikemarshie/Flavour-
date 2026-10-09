@@ -37,3 +37,13 @@ Here's is how flavour works: you land on the homepage and see a big glassy "Find
 A search radius slider (right now it's fixed), filtering by cuisine type, and maybe caching Overpass results server-side so repeat searches in the same area don't have to hit the API again. Honestly, the geolocation permission prompt is also a bit unreliable on some browsers, and I'd like to add a manual "type your address" fallback for people who don't want to share GPS.
 
 but for now its useful and works so i will leave it as is
+
+## Google Search and Search Console setup
+
+The app serves `/robots.txt` and `/sitemap.xml`. The sitemap lists only the public home page. Search results depend on a visitor's private location/session, so they are marked `noindex` and are not included in the sitemap.
+
+Before deploying, set `SITE_URL` to the exact public HTTPS origin (for example, `https://your-domain.example`, with no trailing slash) in the hosting provider's environment settings. The canonical link and sitemap use this value. Do not use a local development URL. `GOOGLE_SITE_VERIFICATION_FILE` is optional; by default, the existing verification endpoint is `/googlefe1fa99a38703b62.html`. To use Google's HTML file verification, set it to the exact filename Google gives you, deploy, and confirm the file opens at the site root before clicking Verify in Search Console. Keep the verification file/route in place after verification.
+
+Once the site is deployed on its final domain, add that site as a Search Console property and complete Google's ownership verification (the site owner must do this in their Google account). Then submit `https://your-domain.example/sitemap.xml` in the Sitemaps section and use URL Inspection to request indexing of the homepage. Google controls crawling and indexing; these steps make the site eligible and discoverable but cannot guarantee when or whether it appears in results.
+
+The verification filename currently in the app was already present in the project. Confirm it belongs to your Search Console property; if Google gives you a different filename, configure `GOOGLE_SITE_VERIFICATION_FILE` to match it exactly.
